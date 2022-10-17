@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Image 2 STL</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+        <meta name="description" content="Create a 3D object from an image and export it as STL">
+
+        <link rel="stylesheet" href="style/default.css">
+        <link rel="shortcut icon" href="style/images/favicon.png">
+    </head>
+    <body>
+
+        <h1>Image 2 STL</h1>
+        <p>
+            Convert an image to a 3D object which you can print on your 3D printer or mill on your CNC machine.
+        </p>
+
+        <h2>Select an image</h2>
+        <div style="display: flex; align-items: center">
+            <input type="file" id="fileInput" style="margin-right: 1rem" accept="image/png,image/jpeg,image/gif">
+            <canvas id="imagePreview"></canvas>
+        </div>
+
+        <h2>Method</h2>
+        <select id="methodSelect">
+            <option value="square_holes">Square holes</option>
+            <option value="depth_map">Depth map</option>
+            <option value="" disabled>More to come ...</option>
+        </select>
+
+        <h2>Pixels <small>(horizontal)</small></h2>
+        <input id="pixelsInput" type="number" min="8" value="32">
+
+        <h2>Preview</h2>
+        <div id="preview"></div>
+
+        <h2>Export</h2>
+        <a href="" id="downloadButton">
+            <button type="button" id="exportButton">Download STL</button>
+        </a>
+
+        <br>
+        <small>Also see <a href="/image2gcode">image2gcode</a></small>
+
+
+        <script src="js/three.min.js"></script>
+        <script src="js/three.orbitcontrols.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://www.thuijzer.nl/simple_stats/simple_stats.js"></script>
+    </body>
+</html>

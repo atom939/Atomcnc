@@ -1,0 +1,80 @@
+<html><head><title>image to gcode: convert your images to gcode</title>
+    <style type="text/css">
+    * { font-family: sans-serif; }
+    BODY { padding: 20px; font-size: 12px; }
+    FORM { float: left; margin-right: 50px;}
+    TABLE { width: 380px; }
+    TEXTAREA { font-family: courier, mono-space; width: 200px; height: 600px; float: left; margin-right: 50px; }
+    CANVAS { background: #000000; width: 600px; height: 600px; }
+    UL { font-size: 10px; }
+    H1 { margin: 0px 0px 10px 0px; }
+    </style>
+    </head><body><h1>image to gcode</h1>
+    
+    <div style="background:#ff6600;padding:1rem;color:#ffffff;margin-bottom:1rem">This script is very old. That's why I created <a href="https://gcode.studio"><b>gcode.studio</b></a>. There you can create an account and store your settings.</div>
+    
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tbody><tr>
+                <td style="width:50%">precision:</td><td><input type="text" name="precision" value="6"></td>
+            </tr>
+            <tr>
+                <td>bit size:</td><td><input type="text" name="bitsize" value="1"></td>
+            </tr>
+            <tr>
+                <td>step bit percent:</td><td><input type="text" name="ss" value="0.5"></td>
+            </tr>
+            <tr>
+                <td>max milling depth:</td><td><input type="text" name="mz" value="0"></td>
+            </tr>
+            <tr>
+                <td>feed rate:</td><td><input type="text" name="fr" value="1000"></td>
+            </tr>
+            <tr>
+                <td>size x:</td><td><input type="text" name="x" value="100"></td>
+            </tr>
+            <tr>
+                <td>max z:</td><td><input type="text" id="wz" name="wz" value="10"></td>
+            </tr>
+            <tr>
+                <td>above max z:</td><td><input type="text" name="awz" value="0"></td>
+            </tr>
+            <tr>
+                <td>add RGB values:</td><td><input type="hidden" name="rgb" value="0"><input type="checkbox" name="rgb" value="1" "=""></td>
+            </tr>
+            <tr>
+                <td>image:</td><td><input type="file" name="image"></td>
+            </tr>
+            <tr>
+                <td></td><td><input type="submit" name="submit" value="generate gcode"><br><small>This will take a minute, please be patient.</small></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul>
+                        <li><b>all sizes in mm</b></li>
+                        <li><b>precision</b>: Number of decimal digits.</li>
+                        <li><b>bit size</b>: Diameter of your bit.</li>
+                        <li><b>step bit percent</b>: Step size as percent of bit size.</li>
+                        <li><b>max milling depth</b>: Use this for roughing. 0 = disable.</li>
+                        <li><b>feed rate</b>: Velocity in mm/min.</li>
+                        <li><b>size x:</b> The width of your piece. Used to calculate image to mm scale.</li>
+                        <li><b>max z:</b> The maximum height calculated from the image (white is max z, black is min z).</li>
+                        <li><b>above max z:</b> Your initial bit position above max z.</li>
+                        <li><b>add RGB values:</b> When checked the RGB values of a pixel are added to calculate height (0-765 range). Unchecked the average of the RGB values are used (0-255 range, safe for most users).</li>
+                        <li><b>image:</b> JPEG, PNG or GIF. RGB! Large images will fail (I think).</li>
+                        <li>Image left top: X0, Y0 (normalized). Image right bottom: X1, Y-1 (normalized).</li>
+                        <li>© Thomas Huijzer. Use at own risk.</li>
+                        <li>Your files are deleted after every upload.</li>
+                        <li>This script will do a lookup for surrounding pixels. Using a large bit size will make the lookup slow.</li>
+                        <li>Search tip: displace(ment) map and bump map(ping)</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody></table>
+    
+        <br>
+        <br>
+        <b>Also see <a href="/image2stl">image2stl</a></b>
+    </form>
+    <script src="https://www.thuijzer.nl/simple_stats/simple_stats.js"></script>
+    </body></html>
